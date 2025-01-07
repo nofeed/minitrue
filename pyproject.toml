@@ -1,0 +1,4 @@
+[project]
+name = "minitrue"
+version = "0.1.0"
+description = "minitrue configuration system"

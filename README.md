@@ -1,0 +1,2 @@
+# minitrue
+Config as code

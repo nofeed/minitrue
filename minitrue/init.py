@@ -14,7 +14,8 @@ def init(path) -> bool:
     except pygit2.GitError:
         raise NotARepositoryError(f"{path} is not a Git repository") from None
     config = Config(path)
-    print("{config.path} {config.config_file}")
+    print(repository)
+    print(config)
 
 
 

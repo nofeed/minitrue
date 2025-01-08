@@ -2,6 +2,7 @@ from pathlib import Path
 
 import pytomlpp
 
+
 class Config:
     def __init__(self, path):
         self.path = Path(path)
@@ -14,5 +15,3 @@ class Config:
     def __add_workdir(self) -> bool:
         workdir_config = {"workdir": self.path.as_posix()}
         pytomlpp.dump(workdir_config, self.config_file)
-
-

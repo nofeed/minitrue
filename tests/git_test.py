@@ -3,6 +3,7 @@ from unittest.mock import patch
 from pathlib import Path
 import pytest
 
+
 def test_init(mocker):
     path = Path("/example")
     with patch("pygit2.Repository"):

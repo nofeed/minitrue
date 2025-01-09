@@ -4,7 +4,7 @@ from minitrue.config import Config
 from minitrue.git import Git
 
 
-def init(path) -> bool:
+def initialize(path) -> bool:
     repository = Git(path)
     config = Config(path)
     print(repository)

@@ -1,10 +1,7 @@
-import sys
-sys.path.append("../minitrue")
-
-from pathlib import Path
-from unittest.mock import patch
-
 from minitrue.config import Config
+from unittest.mock import patch
+from pathlib import Path
+
 
 def test_init(mocker):
     path = Path("/example")

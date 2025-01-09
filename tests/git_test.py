@@ -14,4 +14,4 @@ def test_init(mocker):
 def test_raise_not_a_repository_error(mocker):
     path = Path("/example")
     with pytest.raises(NotARepositoryError):
-        git = Git(path)
+        git = Git(path) # noqa: F841

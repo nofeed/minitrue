@@ -1,5 +1,3 @@
-import pygit2
-
 from minitrue.config import Config
 from minitrue.git import Git
 

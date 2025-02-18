@@ -16,8 +16,8 @@ def init(
     )
 ) -> None:
     """Initializes minitrue on a given local repository (default: current)"""
-    from minitrue import init
-    init.inititialize(path)
+    from minitrue.init import initialize
+    initialize(path)
 
 
 def _version_callback(value: bool) -> None:

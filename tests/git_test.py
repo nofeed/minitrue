@@ -1,4 +1,5 @@
 from minitrue.git import Git, NotARepositoryError
+
 from unittest.mock import patch
 from pathlib import Path
 import pytest
@@ -14,4 +15,4 @@ def test_init(mocker):
 def test_raise_not_a_repository_error(mocker):
     path = Path("/example")
     with pytest.raises(NotARepositoryError):
-        git = Git(path) # noqa: F841
+        git = Git(path)  # noqa: F841

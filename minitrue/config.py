@@ -4,14 +4,24 @@ import pytomlpp
 
 
 class Config:
-    def __init__(self, path):
-        self.path = Path(path)
+    def __init__(self, path, key):
+        self._path = Path(path)
         self.config_file = self.path.joinpath('.minitrue.toml')
-        self.__add_workdir()
+        self._key = key
 
-    def is_present(self) -> bool:
-        self.config_file.is_file()
+    @property
+    def path(self) -> Path:
+        return self._path
 
-    def __add_workdir(self) -> bool:
-        workdir_config = {"workdir": self.path.as_posix()}
-        pytomlpp.dump(workdir_config, self.config_file)
+    @property
+    def key(self) -> str:
+        return self._key
+
+    def __dict__(self) -> dict:
+        return {
+            "path": str(self._path),
+            "key": self._key
+        }
+
+    def write(self) -> bool:
+        pytomlpp.dump(self.__dict__(), self.config_file)

@@ -1,4 +1,5 @@
 pygit2
+pygpgme
 pytest
 pytomlpp
 typer

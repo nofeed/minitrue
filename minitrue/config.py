@@ -4,7 +4,7 @@ import pytomlpp
 
 
 class Config:
-    def __init__(self, path, key):
+    def __init__(self, path, key=None):
         self._path = Path(path)
         self.config_file = self.path.joinpath('.minitrue.toml')
         self._key = key
@@ -22,6 +22,10 @@ class Config:
             "path": str(self._path),
             "key": self._key
         }
+
+    def read(self) -> dict:
+        config = open(self.config_file, "r")
+        return pytomlpp.loads(config.read())
 
     def write(self) -> bool:
         pytomlpp.dump(self.__dict__(), self.config_file)

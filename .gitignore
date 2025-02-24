@@ -121,3 +121,5 @@ cython_debug/
 
 *.gpg
 .minitrue.toml
+
+*.DS_Store

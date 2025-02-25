@@ -2,8 +2,6 @@
   <img src="assets/header.png">
 </p>
 
-# minitrue
-
 > Configuration as code is the formal migration of config between environments, backed by a version control system.
 
 ## What is minitrue?

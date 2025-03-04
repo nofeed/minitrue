@@ -38,8 +38,7 @@ class LocalConfig(OrderedDict):
     def __setitem__(self, k, v):
         if k in self._current_local_config:
             raise DuplicateEntry(
-                f"{k} is already set to {
-                    self._current_local_config[k]}")
+                f"{k} is already set to {self._current_local_config[k]}")
         else:
             self._current_local_config[k] = v
             return self._current_local_config[k]

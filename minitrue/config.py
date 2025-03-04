@@ -34,4 +34,3 @@ class Config:
     def write(self) -> bool:
         pytomlpp.dump(self.__dict__(), self.config_file)
         return True
-

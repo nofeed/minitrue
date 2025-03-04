@@ -2,7 +2,7 @@ import questionary
 
 from minitrue.config import Config
 from minitrue.git import Git, NotARepositoryError
-from minitrue.gpg import KeyChain
+from minitrue.keychain import KeyChain
 
 
 def initialize(path) -> bool:

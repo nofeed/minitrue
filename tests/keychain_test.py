@@ -1,4 +1,4 @@
-from minitrue.gpg import KeyChain
+from minitrue.keychain import KeyChain
 from tests.gpg_util import keys
 import re
 

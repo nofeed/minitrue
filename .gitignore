@@ -118,3 +118,8 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+*.gpg
+.minitrue.toml
+
+*.DS_Store

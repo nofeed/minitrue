@@ -12,7 +12,11 @@ class Git:
     def __init__(self, workdir):
         self.workdir = workdir
         try:
-            self.repository = pygit2.Repository(self.workdir)
+            self._repository = pygit2.Repository(self.workdir)
         except pygit2.GitError:
             raise NotARepositoryError(
                 f"{self.workdir} is not a Git repository") from None
+
+    @property
+    def current_branch(self):
+        return self._repository.head.shorthand

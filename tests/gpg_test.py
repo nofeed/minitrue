@@ -13,4 +13,4 @@ def test_key_fetch(keys: keys):
     keychain = KeyChain(email)
     email_rxp = re.compile(email)
     for key in keychain:
-        assert email_rxp.search(str(key))
+        assert email_rxp.search(str(key)) is not None

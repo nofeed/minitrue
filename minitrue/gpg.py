@@ -4,7 +4,7 @@ import gpgme
 
 
 class KeyChain:
-    def __init__(self, key):
+    def __init__(self, key=None):
         self.context = gpgme.Context()
         if key:
             self._keylist = self.context.keylist(key)
@@ -15,6 +15,9 @@ class KeyChain:
     def keylist(self):
         return self._keylist
 
+    def __getitem__(self, key):
+        return self.context.get_key(key.split(':')[-1])
+
     def __iter__(self) -> Iterator:
         for x in self._keylist:
             yield (Key(x))
@@ -22,9 +25,9 @@ class KeyChain:
 
 class Key:
     def __init__(self, key):
-        self.key = key
-        self._user = self.key.uids[0]
-        self._subkeys = self.key.subkeys
+        self._key = key
+        self._user = self._key.uids[0]
+        self._subkeys = self._key.subkeys
         self._fpr = self.subkeys[0].fpr
 
     @property
@@ -34,10 +37,13 @@ class Key:
     @property
     def subkeys(self):
         return self._subkeys
-    
+
     @property
     def fpr(self):
         return self._fpr
+
+    def decrypt(self, input_file, output_file):
+        return self._key.decrypt(input_file, output_file)
 
     def __repr__(self):
         return f"{self.user.name} <{self.user.email}>: {self.fpr}"

@@ -20,6 +20,21 @@ def init(
     initialize(path)
 
 
+@app.command()
+def set(
+        name: str,
+        value: str,
+        env: str = typer.Option(
+            "",
+            "--env",
+            "-e",
+            help="Sets the variable on a specific branch (default: current)"
+        )
+) -> None:
+    from minitrue.set import set
+    set(name, value, env)
+
+
 def _version_callback(value: bool) -> None:
     from minitrue import APP_NAME, VERSION
     if value:
@@ -39,3 +54,7 @@ def main(
     )
 ) -> None:
     return
+
+
+if __name__ == "__main__":
+    app()

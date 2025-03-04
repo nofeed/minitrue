@@ -1,5 +1,4 @@
 from pathlib import Path
-import re
 from unittest.mock import patch, mock_open
 
 from tests.gpg_util import keys

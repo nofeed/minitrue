@@ -17,7 +17,7 @@ import pytest
 import pathlib
 
 
-keydir = os.path.join(os.path.dirname(__file__), 'keys')
+keydir = os.path.join(os.path.dirname(__file__), 'resources')
 gpghome = tempfile.mkdtemp(prefix='tmp.gpghome')
 
 

@@ -21,7 +21,6 @@ class LocalConfig(OrderedDict):
         self._encrypted_config_file_path = self._path.joinpath('minitrue.gpg')
         self._context = gpgme.Context()
         self._key = self._context.get_key(config['key'].split(':')[-1])
-        self.read()
 
     @property
     def path(self) -> Path:
@@ -46,7 +45,7 @@ class LocalConfig(OrderedDict):
             return self._current_local_config[k]
 
     def read(self) -> dict:
-        with open(self._encrypted_config_file_path, "rb") as input_file:
+        with open(self._encrypted_config_file_path, "a+") as input_file:
             with SpooledTemporaryFile() as output_file:
                 self._context.decrypt(input_file, output_file)
                 output_file.seek(0)

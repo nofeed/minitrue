@@ -10,6 +10,7 @@ def set(name: str, value: str, env: str) -> bool:
     path = Path.cwd()
     config = Config(path).read()
     local_config = LocalConfig(config)
+    local_config.read()
     try:
         local_config[name] = value
         local_config.write()

@@ -20,4 +20,3 @@ def initialize(path) -> bool:
     config = Config(path)
     config.add_key(key)
     config.write()
-    print(config.read())

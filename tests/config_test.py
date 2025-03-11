@@ -25,3 +25,7 @@ def test_add_key(tmpdir):
     assert config.keys == []
     c.add_key("FAKEKEY")
     assert config.keys == ["FAKEKEY"]
+    c.add_key("SECOND_FAKEKEY")
+    assert c.write()
+    config = c.read()
+    assert config.keys == ["FAKEKEY", "SECOND_FAKEKEY"]

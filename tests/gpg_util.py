@@ -17,7 +17,7 @@ import pytest
 import pathlib
 
 
-keydir = os.path.join(os.path.dirname(__file__), 'resources')
+keydir = os.path.join(os.path.dirname(__file__), 'resources/keys')
 gpghome = tempfile.mkdtemp(prefix='tmp.gpghome')
 
 
@@ -26,7 +26,7 @@ def key(k) -> BinaryIO:
 
 
 def import_all_keys() -> list:
-    imported_keys: list[str] = list(pathlib.Path(keydir).glob('*.pub'))
+    imported_keys: list[str] = list(pathlib.Path(keydir).glob('*'))
 
     os.environ['GNUPGHOME'] = gpghome
     with open(os.path.join(gpghome, 'gpg.conf'), 'w') as fp:

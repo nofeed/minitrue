@@ -17,6 +17,10 @@ minitrue init
 ```
 
 ```
+minitrue addkey
+```
+
+```
 minitrue set
 ```
 

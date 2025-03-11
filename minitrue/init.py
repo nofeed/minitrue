@@ -2,7 +2,7 @@ import questionary
 
 from minitrue.config import Config
 from minitrue.git import Git, NotARepositoryError
-from minitrue.gpg import KeyChain
+from minitrue.keychain import KeyChain
 
 
 def initialize(path) -> bool:
@@ -17,5 +17,6 @@ def initialize(path) -> bool:
     keychain = KeyChain(search_key)
     keys = [str(k) for k in keychain]
     key = questionary.select("Select the key to use:", choices=keys).ask()
-    config = Config(path, key)
+    config = Config(path)
+    config.add_key(key)
     config.write()

@@ -1,15 +1,36 @@
 from pathlib import Path
-from unittest.mock import patch, mock_open
 
 from tests.gpg_util import keys
 from minitrue.config import Config
 from minitrue.local_config import LocalConfig
 
-fake_config = open(Path(__file__).parent / "resources/dotminitrue", "r").read()
+config_path = Path(__file__).parent / "resources"
 
-@patch("builtins.open", new_callable=mock_open, read_data=fake_config)
-def test_init(mocker, keys: keys):
-    path = Path("/example")
-    config = Config(path, "FAKEKEY").read()
+
+def test_init(keys: keys):
+    path = Path(config_path)
+    config = Config(str(path)).read()
     local_config = LocalConfig(config)
-    assert local_config.path == path.joinpath("config")
+    assert local_config.path.resolve() == path.joinpath("config")
+
+
+def test_write(keys: keys):
+    path = Path(config_path)
+    config = Config(str(path)).read()
+    local_config = LocalConfig(config)
+    local_config["TEST"] = "TEST"
+    assert local_config.write()
+
+
+def test_set(keys: keys):
+    path = Path(config_path)
+    config = Config(str(path)).read()
+    local_config = LocalConfig(config)
+    local_config["TEST1"] = "TEST_ONE"
+    assert local_config.write()
+    data = local_config.read()
+    assert data["TEST1"] == "TEST_ONE"
+    local_config["TEST1"] = "CHANGED"
+    assert local_config.write()
+    data = local_config.read()
+    assert data["TEST1"] == "CHANGED"

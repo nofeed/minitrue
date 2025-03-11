@@ -32,7 +32,15 @@ def set(
         )
 ) -> None:
     from minitrue.set import set
+
     set(name, value, env)
+
+
+@app.command()
+def addkey() -> None:
+    from minitrue.addkey import addkey
+
+    addkey()
 
 
 def _version_callback(value: bool) -> None:

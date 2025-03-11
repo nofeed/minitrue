@@ -1,5 +1,4 @@
 from pathlib import Path
-from unittest.mock import patch, PropertyMock
 
 from tests.gpg_util import keys
 from minitrue.config import Config

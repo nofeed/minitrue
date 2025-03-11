@@ -3,20 +3,27 @@ from typing import Iterator
 import gpgme
 
 
+class DuplicateKeyError(ValueError):
+    """The given key is already in minitrue"""
+
+    def __init__(self, message):
+        super(DuplicateKeyError, self).__init__(message)
+
+
 class KeyChain:
     def __init__(self, key=None):
-        self.context = gpgme.Context()
+        self._context = gpgme.Context()
         if key:
-            self._keylist = self.context.keylist(key)
+            self._keylist = self._context.keylist(key)
         else:
-            self._keylist = self.context.keylist()
+            self._keylist = self._context.keylist()
 
     @property
     def keylist(self):
         return self._keylist
 
     def __getitem__(self, key):
-        return self.context.get_key(key.split(':')[-1])
+        return self._context.get_key(key.split(':')[-1])
 
     def __iter__(self) -> Iterator:
         for x in self._keylist:

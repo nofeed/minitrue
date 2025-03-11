@@ -1,28 +1,27 @@
-from pathlib import Path
 import re
+from pathlib import Path
 
 from minitrue.config import Config
 
 
-def test_init(mocker):
-    path = Path("/example")
-    c = Config(path, "FAKEKEY")
-    assert c.path == path
-    assert c.config_file == path.joinpath(".minitrue.toml")
-    assert c.key == "FAKEKEY"
+def test_init(tmpdir):
+    c = Config(str(tmpdir))
+    assert c.path == str(tmpdir)
+    assert c.config_file_path == Path(tmpdir).joinpath(".minitrue.toml")
 
 
 def test_write(tmpdir):
-    c = Config(tmpdir, "FAKEKEY")
+    c = Config(str(tmpdir))
     config_rxp = re.compile(".minitrue.toml")
     assert c.write()
-    assert config_rxp.search(str(c.config_file))
-    assert c.config_file.exists()
+    assert config_rxp.search(str(c.config_file_path))
+    assert c.config_file_path.exists()
 
 
-def test_read(tmpdir):
-    c = Config(tmpdir, "FAKEKEY")
-    c.write()
+def test_add_key(tmpdir):
+    c = Config(str(tmpdir))
+    assert c.write()
     config = c.read()
-    assert type(config) is dict
-    assert config["key"] == "FAKEKEY"
+    assert config.keys == []
+    c.add_key("FAKEKEY")
+    assert config.keys == ["FAKEKEY"]

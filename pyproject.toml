@@ -2,6 +2,13 @@
 name = "minitrue"
 version = "0.1.0"
 description = "minitrue configuration system"
+dependencies = [
+  "pygit2",
+  "pygpgme",
+  "pytomlpp",
+  "questionary",
+  "typer"
+]
 
 [project.scripts]
 minitrue = "minitrue.cli:app"

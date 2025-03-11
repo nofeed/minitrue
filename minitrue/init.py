@@ -17,5 +17,7 @@ def initialize(path) -> bool:
     keychain = KeyChain(search_key)
     keys = [str(k) for k in keychain]
     key = questionary.select("Select the key to use:", choices=keys).ask()
-    config = Config(path, key)
+    config = Config(path)
+    config.add_key(key)
     config.write()
+    print(config.read())

@@ -20,6 +20,6 @@ def set(name: str, value: str, env: str) -> bool:
                 print("Thank you, nothing changed")
     else:
         local_config[name] = value
-    
+
     local_config.write()
     print(local_config.read())

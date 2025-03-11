@@ -21,6 +21,7 @@ def test_write(keys: keys):
     local_config["TEST"] = "TEST"
     assert local_config.write()
 
+
 def test_set(keys: keys):
     path = Path(config_path)
     config = Config(str(path)).read()

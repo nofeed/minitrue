@@ -7,8 +7,15 @@ dependencies = [
   "pygpgme",
   "pytomlpp",
   "questionary",
-  "typer"
+  "typer",
+  "jinja2"
 ]
 
 [project.scripts]
 minitrue = "minitrue.cli:app"
+
+[tool.ruff]
+lint.extend-select = ["C4", "NPY", "PD", "SIM", "TCH"]
+lint.ignore = ["E501"]
+show-fixes = true
+target-version = "py310"

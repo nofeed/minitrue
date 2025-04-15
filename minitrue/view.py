@@ -41,5 +41,7 @@ class View:
         with open(self._destination, "w") as d:
             for k, v in self.__locals.items():
                 print(f"{k}: {v}")
-            compiled = self._env.from_string(self.source).render(mt=self.__locals)
+            compiled = self._env.from_string(
+                self.source).render(
+                mt=self.__locals)
             d.write(compiled)

@@ -7,6 +7,7 @@ from minitrue.config import Config
 
 config_path = Path(__file__).parent / "resources" / "config"
 
+
 def test_init():
     path = Path(config_path)
     config = Config(str(path)).read()
@@ -21,6 +22,5 @@ def test_compile():
     config = Config(str(path)).read()
     for source, destination in config.configs.items():
         os.remove(destination)
-        view = View(source, destination, config).compile()
+        View(source, destination, config).compile()
         assert Path(destination).is_file()
- 

@@ -37,6 +37,7 @@ class LocalConfig(OrderedDict):
                 self._context.decrypt(input_file, output_file)
                 output_file.seek(0)
                 data = pytomlpp.loads(output_file.read())
+                print(data)
                 for k, v in data.items():
                     self[k] = v
             except gpgme.GpgmeError:
@@ -47,7 +48,6 @@ class LocalConfig(OrderedDict):
         with open(self._encrypted_config_file_path, "wb") as output_file:
             content = pytomlpp.dumps(self)
             plaintext_bytes = BytesIO(content.encode('utf8'))
-            print(self._recipients)
             self._context.encrypt(
                 self._recipients, gpgme.EncryptFlags.ALWAYS_TRUST, plaintext_bytes, output_file)
             return self

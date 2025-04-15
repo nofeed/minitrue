@@ -31,7 +31,7 @@ class View:
                 return s.read()
         except FileNotFoundError:
             raise SourceNotFoundError(
-                f"{self._source.to_s} cannot be found") from None
+                f"{self._source} cannot be found") from None
 
     @property
     def destination(self):
@@ -39,5 +39,7 @@ class View:
 
     def compile(self, force=False):
         with open(self._destination, "w") as d:
-            compiled = self._env.from_string(self.source).render(self.__locals)
+            for k, v in self.__locals.items():
+                print(f"{k}: {v}")
+            compiled = self._env.from_string(self.source).render(mt=self.__locals)
             d.write(compiled)

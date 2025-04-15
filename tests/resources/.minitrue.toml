@@ -1,2 +1,6 @@
-keys = ['Test Key <test1@example.com>: 1D78DDC33776FB6702860195E2485347ED053AEC']
+keys = ['Test Key <test1@example.com>: 1D78DDC33776FB6702860195E2485347ED053AEC', 'Test Key 2 <test2@example.com>: 6B9E72E69CFB5714953D3A1BFCC140F1A022336E']
 path = 'tests/resources'
+
+[configs]
+'test.toml.mt' = 'test.toml'
+ 

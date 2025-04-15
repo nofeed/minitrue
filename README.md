@@ -15,18 +15,26 @@ minitrue is [OpenSource](LICENSE).
 ```
 minitrue init
 ```
+Initializes the current directory as a project configured with minitrue
+
 
 ```
 minitrue addkey
 ```
+Adds GPG key from your GPG keychain
+
 
 ```
-minitrue set
+minitrue set VARIABLE value
 ```
+Sets the VARIABLE to value and encrypts the configuration
+
 
 ```
-minitrue env
+minitrue addconfig SOURCE DESTINATION
 ```
+Adds a configuration file to your project at SOURCE, to be rendered into DESTINATION
+
 
 ```
 minitrue unset

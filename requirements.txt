@@ -4,3 +4,4 @@ pytest
 pytomlpp
 questionary
 typer
+jinja2

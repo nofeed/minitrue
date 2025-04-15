@@ -10,7 +10,7 @@ def set(name: str, value: str, env: str) -> bool:
     path = Path.cwd()
     config = Config(path).read()
     local_config = LocalConfig(config)
-    if name in local_config.keys():
+    if name in local_config:
         if value != local_config[name]:
             update = questionary.confirm(
                 f"Would you like to update the value if {name} to {value}?").ask()
@@ -22,4 +22,3 @@ def set(name: str, value: str, env: str) -> bool:
         local_config[name] = value
 
     local_config.write()
-    print(local_config.read())

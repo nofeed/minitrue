@@ -1,6 +1,6 @@
-import questionary
-from rich import print
 import typer
+from rich import print
+from rich.prompt import Prompt, Confirm
 
 from minitrue.config import Config
 from minitrue.local_config import LocalConfig
@@ -19,8 +19,7 @@ def set(
     done = False
     if name in local_config:
         if value != local_config[name]:
-            update = questionary.confirm(
-                f"Would you like to update the value of {name} to {value}?").ask()
+            #update = Confirm.ask(f"Would you like to update the value of {name} to {value}?")
             if update:
                 local_config[name] = value
                 done = True
@@ -33,6 +32,6 @@ def set(
 
     if done:
         local_config.write()
-        print(f"Variable {name} has been set")
+        print(f"[green]Variable {name} has been set[/green]")
     else:
-        print(f"Variable {name} couldn't be set")
+        print(f"[bold red]Variable {name} couldn't be set[/bold red]")

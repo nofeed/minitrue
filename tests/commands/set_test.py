@@ -4,8 +4,6 @@ from minitrue.cli import app
 from minitrue.config import Config
 
 from pathlib import Path
-from tests.gpg_util import keys
-from unittest.mock import patch
 
 
 runner = CliRunner()

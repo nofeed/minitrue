@@ -37,7 +37,6 @@ class LocalConfig(OrderedDict):
                 self._context.decrypt(input_file, output_file)
                 output_file.seek(0)
                 data = pytomlpp.loads(output_file.read())
-                print(data)
                 for k, v in data.items():
                     self[k] = v
             except gpgme.GpgmeError:

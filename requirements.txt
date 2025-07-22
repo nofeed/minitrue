@@ -1,7 +1,0 @@
-pygit2
-pygpgme
-pytest
-pytomlpp
-questionary
-typer
-jinja2

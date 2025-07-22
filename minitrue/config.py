@@ -25,7 +25,7 @@ class Config:
         self.read()
 
     @property
-    def path(self) -> Path:
+    def path(self):
         return str(self._path)
 
     @property
@@ -71,7 +71,6 @@ class Config:
 
     def __dict__(self) -> dict:
         return {
-            'path': self.path,
             'configs': self.configs,
             'keys': self.keys
         }
